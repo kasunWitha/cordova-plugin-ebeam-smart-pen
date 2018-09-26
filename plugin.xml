@@ -21,7 +21,7 @@
                 <param name="android-package" value="cordova.plugin.ebeam.smart.pen.EbeamSmartpen" />
             </feature>
         </config-file>
-        <config-file parent="/*" target="AndroidManifest.xml" />
+       <!-- <config-file parent="/*" target="AndroidManifest.xml" />-->
         <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
         <resource-file src="aar/eBeamSmartPenSDK-v1.1.aar" target="aar/eBeamSmartPenSDK-v1.1.aar" />
         <source-file src="src/android/EbeamSmartpen.java" target-dir="src/cordova/plugin/ebeam/smart/pen/EbeamSmartpen" />
