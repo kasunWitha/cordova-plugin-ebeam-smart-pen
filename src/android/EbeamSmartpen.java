@@ -19,6 +19,7 @@ import com.luidia.ebeam.pen.sdk.listener.PenMessageListener;
 public class EbeamSmartpen extends CordovaPlugin {
 
     private EBeamSPController penController;
+    private CordovaWebView web;
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -34,18 +35,29 @@ public class EbeamSmartpen extends CordovaPlugin {
     }
 
     private void create(CallbackContext callbackContext) {
-        EBeamSPController.create(this);
-        penController =EBeamSPController.getInstance();
+       
+        
         callbackContext.success("true");
     }
 
     private void isPenMode(CallbackContext callbackContext) {
         boolean status = penController.isPenMode();
+
         if(status){
             callbackContext.success("true");
         }else{
-            callbackContext.error("false");
+            callbackContext.success("false");
         }
+    }
+
+    @Override
+    public void initialize(CordovaInterface cordova, CordovaWebView webView){
+        super.initialize(cordova, webView);
+        this.web = webView;
+
+        Context context = cordova.getActivity().getApplicationContext();
+        EBeamSPController.create(context);
+        penController =EBeamSPController.getInstance();
     }
     
 }
