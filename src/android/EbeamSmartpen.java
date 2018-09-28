@@ -30,6 +30,16 @@ public class EbeamSmartpen extends CordovaPlugin {
         }else if (action.equals("isPenMode")) {
             this.isPenMode(callbackContext);
             return true;
+        }else if (action.equals("connect")) {
+            String deviceName = args.getJSONObject(0).getString("deviceName");
+            String deviceAddress = args.getJSONObject(0).getString("deviceAddress");
+            this.connect(deviceName, deviceAddress, callbackContext);
+            return true;
+        }else if (action.equals("start")) {
+            String message = args.getString(0);
+            callbackContext.success(message);
+            System.out.println("start method called");
+            return true;
         }
         return false;
     }
@@ -50,6 +60,48 @@ public class EbeamSmartpen extends CordovaPlugin {
         }
     }
 
+    private void connect(String deviceName, String deviceAddress, CallbackContext callbackContext){
+        penController.connect(deviceName, deviceAddress);
+        callbackContext.success();
+    }
+
+
+
+    @Override
+    public void onPenEvent(int i, int i1, int i2, Object o) {
+
+        final String message = "["+i+","+i1+","+i2+"]";
+
+        sendEventCallback(message);
+
+    }
+
+    void sendEventCallback(String message){
+        final String text = message;
+        cordova.getActivity().runOnUiThread(new Runnable(){
+            public void run(){
+                web.loadUrl("javascript:window.plugins.EbeamSmartpen.onEventReceived("+text+")");
+            }
+        });
+    }
+
+
+    @Override
+    public void onPenMessage(int i, int i1, int i2, Object o) {
+        final String message = "["+i+"]";
+
+        sendMessageCallback(message);
+    }
+
+    void sendMessageCallback(String message){
+        final String text = message;
+        cordova.getActivity().runOnUiThread(new Runnable(){
+            public void run(){
+                web.loadUrl("javascript:window.plugins.EbeamSmartpen.onMessageReceived("+text+")");
+            }
+        });
+    }
+
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView){
         super.initialize(cordova, webView);
@@ -58,6 +110,11 @@ public class EbeamSmartpen extends CordovaPlugin {
         Context context = cordova.getActivity().getApplicationContext();
         EBeamSPController.create(context);
         penController =EBeamSPController.getInstance();
+
+        penController.setPenMessageListener(context);
+        penController.setPenEventListener(context);
     }
+
+
     
 }
