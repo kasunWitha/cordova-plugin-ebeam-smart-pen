@@ -1,7 +1,7 @@
 package cordova.plugin.ebeam.smart.pen;
 
-import org.apache.cordova.CordovaPlugin;
-import org.apache.cordova.CallbackContext;
+import org.apache.cordova.*;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
