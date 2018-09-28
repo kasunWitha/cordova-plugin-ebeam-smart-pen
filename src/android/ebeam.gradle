@@ -5,7 +5,7 @@
    }
    }
   dependencies {
-   compile(name:'eBeamSmartPenSDK-v1.1', ext:'aar')
+   compile(name:'classes', ext:'jar')
    }
 
  android {

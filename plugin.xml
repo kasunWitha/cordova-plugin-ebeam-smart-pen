@@ -23,7 +23,7 @@
         </config-file>
         <config-file parent="/*" target="AndroidManifest.xml" />
         <framework src="src/android/ebeam.gradle" custom="true" type="gradleReference" />
-        <resource-file src="aar/eBeamSmartPenSDK-v1.1.aar" target="libs/eBeamSmartPenSDK-v1.1.aar" />
+        <resource-file src="aar/classes.jar" target="libs/classes.jar" />
         <source-file src="src/android/EbeamSmartpen.java" target-dir="src/cordova/plugin/ebeam/smart/pen/EbeamSmartpen" />
     </platform>
     <platform name="ios">
