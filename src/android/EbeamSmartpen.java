@@ -38,7 +38,9 @@ public class EbeamSmartpen extends CordovaPlugin {
 
     private void create(JSONArray args, CallbackContext callbackContext) {
        
-        
+        Context context = cordova.getActivity().getApplicationContext();
+        EBeamSPController.create(context);
+        penController =EBeamSPController.getInstance();
         callbackContext.success("true");
     }
 
@@ -57,9 +59,9 @@ public class EbeamSmartpen extends CordovaPlugin {
         super.initialize(cordova, webView);
         this.web = webView;
 
-        Context context = cordova.getActivity().getApplicationContext();
-        EBeamSPController.create(context);
-        penController =EBeamSPController.getInstance();
+       // Context context = cordova.getActivity().getApplicationContext();
+       // EBeamSPController.create(context);
+       // penController =EBeamSPController.getInstance();
     }
     
 }
