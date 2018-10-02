@@ -27,22 +27,22 @@ public class EbeamSmartpen extends CordovaPlugin {
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("create")) {
             //String message = args.getString(0);
-            this.create(callbackContext);
+            this.create(args, callbackContext);
             return true;
         }else if (action.equals("isPenMode")) {
-            this.isPenMode(callbackContext);
+            this.isPenMode(args, callbackContext);
             return true;
         }
         return false;
     }
 
-    private void create(CallbackContext callbackContext) {
+    private void create(JSONArray args, CallbackContext callbackContext) {
        
         
         callbackContext.success("true");
     }
 
-    private void isPenMode(CallbackContext callbackContext) {
+    private void isPenMode(JSONArray args, CallbackContext callbackContext) {
         boolean status = penController.isPenMode();
 
         if(status){
