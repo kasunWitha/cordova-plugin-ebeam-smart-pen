@@ -58,8 +58,8 @@ public class EbeamSmartpen extends CordovaPlugin {
         this.web = webView;
 
         Context context = cordova.getActivity().getApplicationContext();
-        EBeamSPController.create(context);
-        penController =EBeamSPController.getInstance();
+       // EBeamSPController.create(context);
+        //penController =EBeamSPController.getInstance();
     }
     
 }
