@@ -7,7 +7,7 @@
         <clobbers target="EbeamSmartpen" />
     </js-module>
     <platform name="android">
-        <source-file src="aar/eBeamSmartPenSDK-v1.1.aar" target-dir="libs"/>
+        <lib-file src="aar/eBeamSmartPenSDK-v1.1.aar"/>
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.BLUETOOTH"/>
             <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
