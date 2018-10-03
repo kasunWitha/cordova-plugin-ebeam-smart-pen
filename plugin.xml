@@ -7,15 +7,15 @@
         <clobbers target="EbeamSmartpen" />
     </js-module>
     <platform name="android">
-        <source-file src="aar/classes.jar" target-dir="libs"/>
+        <source-file src="aar/eBeamSmartPenSDK-v1.1.aar" target-dir="libs"/>
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.BLUETOOTH"/>
             <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
             <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
             <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-            <!--<application>
+            <application>
                 <service android:name="com.luidia.ebeam.pen.sdk.UartService" android:enabled="true"/>
-            </application> -->
+            </application>
         </config-file>
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="EbeamSmartpen">
